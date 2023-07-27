@@ -2,7 +2,6 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 
-// base and wrapped app
 function BaseApp() {
   return (
     <Routes>
