@@ -16,13 +16,7 @@
 
 // mock data
 
-type QuoteData = { content: string; author: string; length: number };
-
-export const mockQuote: QuoteData = {
-  content: `You can't make a tomlette without breaking some Gregs.`,
-  author: 'Tom Wambsgans',
-  length: 54,
-};
+export type QuoteData = { content: string; author: string };
 
 export const alphabetArray: string[] = [
   'A',
@@ -52,3 +46,23 @@ export const alphabetArray: string[] = [
   'Y',
   'Z',
 ];
+
+// = mockQuote.content.concat(' -', mockQuote.author);
+export function parseQuote(quote: string, author: string): string[] {
+  const quoteText = quote.concat(' - ', author).toUpperCase();
+  return Array.from(quoteText);
+}
+
+export function alphabetShuffle(alphabet: string[]): string[] {
+  const shuffledAlphabet: string[] = [];
+  const usedIndexes: number[] = [];
+
+  for (let i = 0; usedIndexes.length < alphabet.length; i += 1) {
+    const randomIndex = Math.floor(Math.random() * alphabet.length);
+    if (!usedIndexes.includes(randomIndex)) {
+      shuffledAlphabet.push(alphabet[randomIndex]);
+      usedIndexes.push(randomIndex);
+    }
+  }
+  return shuffledAlphabet;
+}
