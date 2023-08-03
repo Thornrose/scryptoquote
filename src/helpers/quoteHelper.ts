@@ -14,9 +14,42 @@
 } 
 */
 
-// mock data
+// types and data
 
 export type QuoteData = { content: string; author: string };
+
+export type KeyHolder = {
+  [index: string]: string;
+};
+
+export const puzzleKey: KeyHolder = {
+  A: '',
+  B: '',
+  C: '',
+  D: '',
+  E: '',
+  F: '',
+  G: '',
+  H: '',
+  I: '',
+  J: '',
+  K: '',
+  L: '',
+  M: '',
+  N: '',
+  O: '',
+  P: '',
+  Q: '',
+  R: '',
+  S: '',
+  T: '',
+  U: '',
+  V: '',
+  W: '',
+  X: '',
+  Y: '',
+  Z: '',
+};
 
 export const alphabetArray: string[] = [
   'A',
@@ -47,7 +80,6 @@ export const alphabetArray: string[] = [
   'Z',
 ];
 
-// = mockQuote.content.concat(' -', mockQuote.author);
 export function parseQuote(quote: string, author: string): string[] {
   const quoteText = quote.concat(' - ', author).toUpperCase();
   return Array.from(quoteText);
@@ -65,6 +97,39 @@ export function alphabetShuffle(
       shuffledAlphabet.push(alphabet[randomIndex]);
       usedIndexes.push(randomIndex);
     }
+    if (
+      shuffledAlphabet[randomIndex] === alphabet[randomIndex] &&
+      randomIndex === 0
+    ) {
+      shuffledAlphabet.push(shuffledAlphabet.splice(randomIndex, 1)[0]);
+    } else if (
+      shuffledAlphabet[randomIndex] === alphabet[randomIndex] &&
+      randomIndex === alphabet.length - 1
+    ) {
+      shuffledAlphabet.unshift(shuffledAlphabet.splice(randomIndex, 1)[0]);
+    }
   }
+
   return [shuffledAlphabet, usedIndexes];
+}
+
+export function charMatch(
+  alphabet: string[],
+  shuffledAlphabet: string[]
+): void {
+  alphabet.forEach((letter) => {
+    puzzleKey[letter] = shuffledAlphabet[alphabet.indexOf(letter)];
+  });
+}
+
+export function quoteShuffle(quote: string[], cipher: KeyHolder) {
+  const shuffledQuote: string[] = [];
+  for (let i = 0; i < quote.length; i += 1) {
+    if (Object.prototype.hasOwnProperty.call(cipher, quote[i])) {
+      shuffledQuote.push(cipher[quote[i]]);
+    } else if (!Object.prototype.hasOwnProperty.call(cipher, quote[i])) {
+      shuffledQuote.push(quote[i]);
+    }
+  }
+  return shuffledQuote;
 }

@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 
 import {
+  QuoteData,
+  alphabetArray,
+  puzzleKey,
   parseQuote,
   alphabetShuffle,
-  alphabetArray,
+  charMatch,
+  quoteShuffle,
 } from '../helpers/quoteHelper';
 
 const url: string = `https://api.quotable.io/random/`;
@@ -13,15 +17,20 @@ function Home() {
   const [author, setAuthor] = useState('');
 
   // for testing:
-  const mockQuote = {
+  const mockQuote: QuoteData = {
     content: `You can't make a tomlette without breaking some Gregs.`,
     author: 'Tom Wambsgans',
   };
 
   // remember that because this is being done outside of useEffect, it's being done twice due to mounting
-  const quoteArray = parseQuote(mockQuote.content, mockQuote.author);
+  const quoteArray: string[] = parseQuote(mockQuote.content, mockQuote.author);
 
   const [shuffledAlphabet, usedIndexes] = alphabetShuffle(alphabetArray);
+  charMatch(alphabetArray, shuffledAlphabet);
+  console.log(puzzleKey);
+
+  const shuffledQuote = quoteShuffle(quoteArray, puzzleKey);
+  console.log(shuffledQuote);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +49,8 @@ function Home() {
       <div>{author}</div>
       <br />
       <div>{quoteArray}</div>
+      <div>{shuffledQuote}</div>
+      <div>{alphabetArray.join(', ')}</div>
       <div>{shuffledAlphabet.join(', ')}</div>
       <div>{usedIndexes.join(', ')}</div>
     </>
