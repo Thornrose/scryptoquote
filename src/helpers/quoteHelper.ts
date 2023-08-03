@@ -53,7 +53,9 @@ export function parseQuote(quote: string, author: string): string[] {
   return Array.from(quoteText);
 }
 
-export function alphabetShuffle(alphabet: string[]): string[] {
+export function alphabetShuffle(
+  alphabet: string[]
+): [shuffledAlphabet: string[], usedIndexes: number[]] {
   const shuffledAlphabet: string[] = [];
   const usedIndexes: number[] = [];
 
@@ -64,5 +66,5 @@ export function alphabetShuffle(alphabet: string[]): string[] {
       usedIndexes.push(randomIndex);
     }
   }
-  return shuffledAlphabet;
+  return [shuffledAlphabet, usedIndexes];
 }

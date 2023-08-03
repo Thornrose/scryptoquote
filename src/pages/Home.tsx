@@ -18,9 +18,10 @@ function Home() {
     author: 'Tom Wambsgans',
   };
 
+  // remember that because this is being done outside of useEffect, it's being done twice due to mounting
   const quoteArray = parseQuote(mockQuote.content, mockQuote.author);
 
-  const shuffledAlphabet = alphabetShuffle(alphabetArray);
+  const [shuffledAlphabet, usedIndexes] = alphabetShuffle(alphabetArray);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,8 +40,8 @@ function Home() {
       <div>{author}</div>
       <br />
       <div>{quoteArray}</div>
-      <div>{shuffledAlphabet}</div>
-      <div>{shuffledAlphabet.length}</div>
+      <div>{shuffledAlphabet.join(', ')}</div>
+      <div>{usedIndexes.join(', ')}</div>
     </>
   );
 }
