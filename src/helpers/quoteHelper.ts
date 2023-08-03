@@ -97,16 +97,12 @@ export function alphabetShuffle(
       shuffledAlphabet.push(alphabet[randomIndex]);
       usedIndexes.push(randomIndex);
     }
-    if (
-      shuffledAlphabet[randomIndex] === alphabet[randomIndex] &&
-      randomIndex === 0
-    ) {
-      shuffledAlphabet.push(shuffledAlphabet.splice(randomIndex, 1)[0]);
-    } else if (
-      shuffledAlphabet[randomIndex] === alphabet[randomIndex] &&
-      randomIndex === alphabet.length - 1
-    ) {
-      shuffledAlphabet.unshift(shuffledAlphabet.splice(randomIndex, 1)[0]);
+  }
+
+  for (let i = 0; i < alphabet.length; i += 1) {
+    if (shuffledAlphabet[i] === alphabet[i]) {
+      // working here
+      // remove the element and move it to the end - might then need recursion to check because this will shift all elements
     }
   }
 
@@ -133,3 +129,15 @@ export function quoteShuffle(quote: string[], cipher: KeyHolder) {
   }
   return shuffledQuote;
 }
+
+// if (
+//   shuffledAlphabet[randomIndex] === alphabet[randomIndex] &&
+//   randomIndex === 0
+// ) {
+//   shuffledAlphabet.push(shuffledAlphabet.splice(randomIndex, 1)[0]);
+// } else if (
+//   shuffledAlphabet[randomIndex] === alphabet[randomIndex] &&
+//   randomIndex === alphabet.length - 1
+// ) {
+//   shuffledAlphabet.unshift(shuffledAlphabet.splice(randomIndex, 1)[0]);
+// }
