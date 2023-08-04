@@ -29,7 +29,7 @@ function Home() {
   const shuffledAlphabet = alphabetShuffle(alphabetArray);
   spotCheck(alphabetArray, shuffledAlphabet);
   charMatch(alphabetArray, shuffledAlphabet);
-  console.log(puzzleKey);
+  // console.log(puzzleKey);
 
   const shuffledQuote = quoteShuffle(quoteArray, puzzleKey);
 
@@ -45,9 +45,12 @@ function Home() {
   }, []);
   return (
     <>
-      <h1>Hello!</h1>
-      <div>{quote}</div>
-      <div>{author}</div>
+      <div className="mx-auto flex max-w-sm items-center space-x-4 rounded-xl bg-white p-6 shadow-lg">
+        <div>
+          <p className="text-slate-500">{quote}</p>
+          <div className="text-xl font-medium text-black">{author}</div>
+        </div>
+      </div>
       <br />
       <div>{quoteArray}</div>
       <div>{shuffledQuote}</div>
