@@ -6,6 +6,7 @@ import {
   puzzleKey,
   parseQuote,
   alphabetShuffle,
+  spotCheck,
   charMatch,
   quoteShuffle,
 } from '../helpers/quoteHelper';
@@ -25,12 +26,12 @@ function Home() {
   // remember that because this is being done outside of useEffect, it's being done twice due to mounting
   const quoteArray: string[] = parseQuote(mockQuote.content, mockQuote.author);
 
-  const [shuffledAlphabet, usedIndexes] = alphabetShuffle(alphabetArray);
+  const shuffledAlphabet = alphabetShuffle(alphabetArray);
+  spotCheck(alphabetArray, shuffledAlphabet);
   charMatch(alphabetArray, shuffledAlphabet);
   console.log(puzzleKey);
 
   const shuffledQuote = quoteShuffle(quoteArray, puzzleKey);
-  console.log(shuffledQuote);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +53,6 @@ function Home() {
       <div>{shuffledQuote}</div>
       <div>{alphabetArray.join(', ')}</div>
       <div>{shuffledAlphabet.join(', ')}</div>
-      <div>{usedIndexes.join(', ')}</div>
     </>
   );
 }

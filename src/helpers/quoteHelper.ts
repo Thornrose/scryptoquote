@@ -85,9 +85,7 @@ export function parseQuote(quote: string, author: string): string[] {
   return Array.from(quoteText);
 }
 
-export function alphabetShuffle(
-  alphabet: string[]
-): [shuffledAlphabet: string[], usedIndexes: number[]] {
+export function alphabetShuffle(alphabet: string[]): string[] {
   const shuffledAlphabet: string[] = [];
   const usedIndexes: number[] = [];
 
@@ -99,14 +97,25 @@ export function alphabetShuffle(
     }
   }
 
+  return shuffledAlphabet;
+}
+
+export function spotCheck(
+  alphabet: string[],
+  shuffledAlphabet: string[]
+): void {
   for (let i = 0; i < alphabet.length; i += 1) {
-    if (shuffledAlphabet[i] === alphabet[i]) {
-      // working here
-      // remove the element and move it to the end - might then need recursion to check because this will shift all elements
+    if (shuffledAlphabet[i] === alphabet[i] && shuffledAlphabet[i] !== 'Z') {
+      shuffledAlphabet.push(shuffledAlphabet.splice(i, 1)[0]);
+      i -= 1;
+    } else if (
+      shuffledAlphabet[i] === alphabet[i] &&
+      shuffledAlphabet[i] === 'Z'
+    ) {
+      shuffledAlphabet.unshift(shuffledAlphabet.splice(i, 1)[0]);
+      i = 0;
     }
   }
-
-  return [shuffledAlphabet, usedIndexes];
 }
 
 export function charMatch(
