@@ -45,15 +45,17 @@ function Home() {
   }, []);
   return (
     <>
-      <div className="mx-auto flex max-w-sm items-center space-x-4 rounded-xl bg-white p-6 shadow-lg">
+      <div className=" mx-auto flex max-w-sm items-center space-x-4 rounded-xl bg-white p-6 font-pangolin shadow-lg">
         <div>
-          <p className="text-slate-500">{quote}</p>
-          <div className="text-xl font-medium text-black">{author}</div>
+          <p className="font-pangolin text-slate-500">{quote}</p>
+          <div className="font-pangolin text-xl font-medium text-black">
+            {author}
+          </div>
         </div>
       </div>
       <br />
-      <div>{quoteArray}</div>
-      <div>{shuffledQuote}</div>
+      <div className="font-pangolin">{quoteArray}</div>
+      <div className="font-pangolin">{shuffledQuote}</div>
       <div>{alphabetArray.join(', ')}</div>
       <div>{shuffledAlphabet.join(', ')}</div>
     </>

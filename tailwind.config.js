@@ -2,7 +2,14 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'cool-cream': '#e4dfda',
+      },
+      fontFamily: {
+        pangolin: ['Pangolin', 'cursive'],
+      },
+    },
   },
   plugins: [],
 };
