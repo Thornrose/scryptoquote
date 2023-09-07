@@ -10,6 +10,8 @@ import {
   charMatch,
   quoteShuffle,
 } from '../helpers/quoteHelper';
+import Header from './Header';
+import QuoteForm from './QuoteForm';
 
 const url: string = `https://api.quotable.io/random/`;
 
@@ -45,40 +47,12 @@ function Home() {
   }, []);
   return (
     <>
-      <h1 className="m-8 flex justify-center font-pangolin text-2xl">
-        scryptoquote
-      </h1>
-      <ul className="flex flex-row justify-center gap-x-2 p-8 font-pangolin text-4xl">
-        <li className="flex flex-col text-center">
-          <input
-            className="flex w-9 justify-center bg-transparent text-center uppercase text-neutral-700 focus:outline-none"
-            type="text"
-            maxLength={1}
-          />
-          <hr className="mb-1 h-1.5 rounded bg-cool-black/30" />
-          <p className="text-cool-blue">Y</p>
-        </li>
-        <li className="flex flex-col text-center">
-          <input
-            className="flex w-9 justify-center bg-transparent text-center uppercase text-neutral-700 focus:outline-none"
-            type="text"
-            maxLength={1}
-          />
-          <hr className="mb-1 h-1.5 rounded bg-cool-black/30" />
-          <p className="text-cool-blue">O</p>
-        </li>
-        <li className="flex flex-col text-center">
-          <input
-            className="flex w-9 justify-center bg-transparent text-center uppercase text-neutral-700 focus:outline-none"
-            type="text"
-            maxLength={1}
-          />
-          <hr className="mb-1 h-1.5 rounded bg-cool-black/30" />
-          <p className="text-cool-blue">U</p>
-        </li>
-      </ul>
-      <div className="font-pangolin">{quoteArray}</div>
-      <div className="font-pangolin">{shuffledQuote}</div>
+      <Header />
+      <main>
+        <section>
+          <QuoteForm />
+        </section>
+      </main>
     </>
   );
 }
