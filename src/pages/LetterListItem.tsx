@@ -1,4 +1,9 @@
-export default function LetterListItem() {
+type LetterProps = {
+  quoteLetter: string;
+};
+
+export default function LetterListItem(props: LetterProps) {
+  const { quoteLetter } = props;
   return (
     <li className="flex flex-col text-center">
       <input
@@ -7,7 +12,7 @@ export default function LetterListItem() {
         maxLength={1}
       />
       <hr className="mb-1 h-1.5 rounded bg-cool-black/30" />
-      <p className="text-cool-blue">Y</p>
+      <p className="text-cool-blue">{quoteLetter}</p>
     </li>
   );
 }
