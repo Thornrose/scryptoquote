@@ -5,6 +5,8 @@ export default {
     extend: {
       colors: {
         'cool-cream': '#e4dfda',
+        'cool-black': '#162521',
+        'cool-blue': '#4f7cac',
       },
       fontFamily: {
         pangolin: ['Pangolin', 'cursive'],

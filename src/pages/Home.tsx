@@ -45,19 +45,28 @@ function Home() {
   }, []);
   return (
     <>
-      <div className=" mx-auto flex max-w-sm items-center space-x-4 rounded-xl bg-white p-6 font-pangolin shadow-lg">
-        <div>
-          <p className="font-pangolin text-slate-500">{quote}</p>
-          <div className="font-pangolin text-xl font-medium text-black">
-            {author}
-          </div>
-        </div>
-      </div>
-      <br />
+      <h1 className="m-8 flex justify-center font-pangolin text-2xl">
+        scryptoquote
+      </h1>
+      <ul className="flex flex-row justify-center gap-x-2 p-8 font-pangolin text-4xl">
+        <li className="flex flex-col text-center">
+          <input className="flex w-9 justify-center bg-transparent text-center text-neutral-700 focus:outline-none" />
+          <hr className="mb-1 h-1.5 rounded bg-cool-black/30" />
+          <p className="text-cool-blue">Y</p>
+        </li>
+        <li className="flex flex-col text-center">
+          <input className="flex w-9 justify-center bg-transparent text-center text-neutral-700 focus:outline-none" />
+          <hr className="mb-1 h-1.5 rounded bg-cool-black/30" />
+          <p className="text-cool-blue">O</p>
+        </li>
+        <li className="flex flex-col text-center">
+          <input className="flex w-9 justify-center bg-transparent text-center text-neutral-700 focus:outline-none" />
+          <hr className="mb-1 h-1.5 rounded bg-cool-black/30" />
+          <p className="text-cool-blue">U</p>
+        </li>
+      </ul>
       <div className="font-pangolin">{quoteArray}</div>
       <div className="font-pangolin">{shuffledQuote}</div>
-      <div>{alphabetArray.join(', ')}</div>
-      <div>{shuffledAlphabet.join(', ')}</div>
     </>
   );
 }
