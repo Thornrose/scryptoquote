@@ -1,9 +1,14 @@
 import LetterList from './LetterList';
 
-export default function QuoteForm() {
+type PuzzleProps = {
+  puzzle: string[];
+};
+
+export default function QuoteForm(props: PuzzleProps) {
+  const { puzzle } = props;
   return (
     <form>
-      <LetterList />
+      <LetterList puzzle={puzzle} />
     </form>
   );
 }

@@ -1,12 +1,19 @@
 import LetterListItem from './LetterListItem';
 
-export default function LetterList() {
+type PuzzleArrayProps = {
+  puzzle: string[];
+};
+
+export default function LetterList(props: PuzzleArrayProps) {
+  const { puzzle } = props;
+
+  const letters = puzzle.map((letter, index) => {
+    return <LetterListItem key={index} quoteLetter={letter} />;
+  });
+
   return (
-    <ul className="flex flex-row justify-center gap-x-2 p-8 font-pangolin text-4xl">
-      {}
-      <LetterListItem quoteLetter="Y" />
-      <LetterListItem quoteLetter="O" />
-      <LetterListItem quoteLetter="U" />
+    <ul className="flex flex-row flex-wrap justify-center gap-x-2 p-8 font-pangolin text-4xl">
+      {letters}
     </ul>
   );
 }
