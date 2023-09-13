@@ -1,3 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { v4 as uuidv4 } from 'uuid';
+
 import LetterListItem from './LetterListItem';
 
 type PuzzleArrayProps = {
@@ -7,8 +10,8 @@ type PuzzleArrayProps = {
 export default function LetterList(props: PuzzleArrayProps) {
   const { puzzle } = props;
 
-  const letters = puzzle.map((letter, index) => {
-    return <LetterListItem key={index} quoteLetter={letter} />;
+  const letters = puzzle.map((letter) => {
+    return <LetterListItem key={uuidv4()} quoteLetter={letter} />;
   });
 
   return (
