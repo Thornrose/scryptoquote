@@ -81,7 +81,7 @@ export const alphabetArray: string[] = [
 ];
 
 export function parseQuote(quote: string, author: string): string[] {
-  const quoteText = quote.concat(' - ', author).toUpperCase();
+  const quoteText = quote.concat('\n - ', author).toUpperCase();
   return Array.from(quoteText);
 }
 
