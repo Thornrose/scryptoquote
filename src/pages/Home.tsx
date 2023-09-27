@@ -16,7 +16,6 @@ function Home() {
           <QuoteForm puzzle={puzzle} />
         </section>
         <section>
-          <div>{puzzle}</div>
           <div>{tempQuote}</div>
         </section>
       </main>
